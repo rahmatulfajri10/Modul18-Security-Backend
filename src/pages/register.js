@@ -10,11 +10,13 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+
+const baseUrl = process.env.REACT_APP_URL_BACKEND;
 // Abaikan kode di bawah ini
 const theme = createTheme();
   
 const Register = () => {
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -35,7 +37,7 @@ const Register = () => {
         email: data.get('email'),
         password: data.get('password'),
       })
-      navigate('../login');
+      Navigate('../login');
     } catch (error) {
       console.log(error);
       alert('Register Failed!')
